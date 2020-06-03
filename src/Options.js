@@ -7,17 +7,7 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   });
 
 export default class Options extends Component {
-    updateFeature = (feature, newValue) => {
-        const selected = Object.assign({}, this.props.parts);
-        selected[feature] = newValue;
-        this.setState({
-          selected
-        });
-        console.log(this.props.parts[feature])
-      };
-
-    render() {
-      console.log(this.props.parts)
+      render() {
         const features = Object.keys(this.props.features).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             const options = this.props.features[feature].map(item => {
@@ -30,7 +20,7 @@ export default class Options extends Component {
                     className="feature__option"
                     name={slugify(feature)}
                     checked={item.name === this.props.parts[feature].name}
-                    onChange={e => this.updateFeature(feature, item)}
+                    onChange={e => this.props.updateFeature(feature, item)}
                   />
                   <label htmlFor={itemHash} className="feature__label">
                     {item.name} ({USCurrencyFormat.format(item.cost)})
