@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Cart from './Cart'
-import Options from './Options'
+import MainForm from './MainForm'
 import './App.css';
 
 class App extends Component {
@@ -39,13 +39,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            <Options 
-                features={this.props.features}
-                parts={this.state.selected}
-                updateFeature={this.updateFeature}/>
-          </form>
+            <MainForm
+              parts={this.state.selected}
+              updateFeature={this.updateFeature}
+            />
           <section className="main__summary">
             <Cart parts={this.state.selected}/>
           </section>
